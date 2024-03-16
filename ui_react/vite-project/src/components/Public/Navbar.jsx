@@ -17,7 +17,6 @@ const Navbar = () => {
   };
 
   const links = [
-    
     {
       name: 'Home',
       path: '/',
@@ -50,7 +49,6 @@ const Navbar = () => {
       path: '/contact',
       icon: <Envelope size={20} />,
     },
-    
     {
       name: 'Login',
       path: '/login',
@@ -59,9 +57,11 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-white shadow-lg">
+    <nav className="bg-white rounded-3xl shadow-xl mb-4">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <div className="text-orange-600 font-extrabold text-4xl text-sm">Matrix</div>
+        <div className="text-sm">
+          <span className="text-transparent bg-gradient-to-r from-orange-400 to-red-600 bg-clip-text font-extrabold text-4xl">MatriX</span>
+        </div>
         <button
           onClick={toggleMenu}
           className="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-white"
@@ -96,7 +96,7 @@ const Navbar = () => {
               <div key={index} className="relative">
                 <button
                   onClick={() => toggleMenu(index)}
-                  className="text-orange-500 flex items-center hover:bg-orange-300 px-3 py-2 rounded-md transition-all duration-300 ease-in-out"
+                  className="text-orange-500 flex items-center px-3 py-2 rounded-md transition-all duration-300 ease-in-out hover:shadow-lg hover:scale-105 hover:text-white hover:bg-gradient-to-r from-orange-400 to-orange-600"
                 >
                   {link.icon}
                   <span className="ml-2 text-sm">{link.name}</span>
@@ -125,7 +125,7 @@ const Navbar = () => {
                 key={index}
                 to={link.path}
                 activeClassName="shadow-md font-bold"
-                className="text-orange-500 flex items-center hover:bg-orange-300 px-3 py-2 rounded-md transition-all duration-300 ease-in-out"
+                className="text-orange-500 flex items-center px-3 py-2 rounded-md transition-all duration-300 ease-in-out hover:shadow-lg hover:scale-105 hover:text-white hover:bg-gradient-to-r from-orange-400 to-orange-600"
               >
                 {link.icon}
                 <span className="ml-2 text-sm">{link.name}</span>
