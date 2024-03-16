@@ -6,9 +6,9 @@ import { Outlet } from 'react-router-dom'
 const Weblayout = () => {
   return (
     <>
-        <div className='h-screen w-screen p-0 m-0 flex flex-col'>
+        <div className='h-screen w-screen p-0 m-0 flex flex-col overflow-scroll'>
             <Navbar/>
-            <div>
+            <div className='h-[80vh] relative overflow-y-scroll'>
                 <Outlet/>
             </div>
             <Footer/>
