@@ -21,7 +21,7 @@ const Navbar = () => {
   const links = [
     {
       name: 'Home',
-      path: '/',
+      path: '/user',
       icon: <HouseDoor size={20} />,
     },
     {
