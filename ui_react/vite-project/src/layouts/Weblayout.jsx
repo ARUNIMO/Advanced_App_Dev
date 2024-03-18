@@ -8,7 +8,7 @@ const Weblayout = () => {
     <>
         <div className='h-screen w-screen p-0 m-0 flex flex-col overflow-scroll'>
             <Navbar/>
-            <div className='h-[80vh] relative overflow-y-scroll'>
+            <div className='h-[90vh] relative overflow-y-scroll'>
                 <Outlet/>
             </div>
             <Footer/>
