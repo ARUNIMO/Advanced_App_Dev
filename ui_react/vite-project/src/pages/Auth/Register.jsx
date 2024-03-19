@@ -29,7 +29,7 @@ const Register = () => {
             </div>
             <button type="submit" className="bg-[#f35415] w-max mx-auto px-6 py-2 rounded text-white text-sm font-normal z-10">Register</button>
           </form>
-          <div className="text-sm text-center mt-[1.6rem] z-10">Already have an account? <Link to="/login" className="text-sm text-[#f35415]">Log in here</Link></div>
+          <div className="text-sm text-center mt-[1.6rem] z-10">Already have an account? <Link to="/" className="text-sm text-[#f35415]">Log in here</Link></div>
         </div>
       </div>
     </div>

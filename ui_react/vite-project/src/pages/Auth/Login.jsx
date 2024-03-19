@@ -12,9 +12,13 @@ const Login = () => {
     event.preventDefault(); // Prevent the default form submission behavior
     
     // Perform authentication logic here
-    if (email === 'arun@gmail.com' && password === '12345') {
-      // Redirect to the profile page
-      navigate('/user');
+    if ((email === 'arun@gmail.com' && password === '12345') || (email === 'admin@gmail.com' && password === 'admin')) {
+      // Redirect to the appropriate dashboard
+      if (email === 'arun@gmail.com') {
+        navigate('/user');
+      } else if (email === 'admin@gmail.com') {
+        navigate('/admin/dashboard');
+      }
     } else {
       setError('Invalid email or password');
     }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink,useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import {
   HouseDoor,
   Envelope,
@@ -29,19 +29,14 @@ const Navbar = () => {
       icon: <HouseDoor size={20} />,
     },
     {
-      name: 'Events',
-      path: '/events',
-      icon: <Calendar2Check size={20} />,
+      name: 'Institutes',
+      path: '/institutes',
+      icon: <People size={20} />,
     },
     {
       name: 'Courses',
       path: '/courses',
       icon: <Book size={20} />,
-    },
-    {
-      name: 'Subscription',
-      path: '/user/subscription',
-      icon: <Envelope size={20} />,
     },
     {
       name: 'Profile',
