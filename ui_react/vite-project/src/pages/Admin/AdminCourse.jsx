@@ -16,8 +16,7 @@ const AdminCourses = () => {
     place: '',
     price: '',
   });
-
-  const courses = [
+  const [courses, setCourses] = useState([
     {
       name: 'Course 1',
       school: 'School 1',
@@ -28,7 +27,7 @@ const AdminCourses = () => {
       button: '/courses',
     },
     // Add more courses as needed
-  ];
+  ]);
 
   // Filter courses based on search input, rating, place, and price
   const filteredCourses = courses.filter(course =>
@@ -40,8 +39,9 @@ const AdminCourses = () => {
 
   // Function to delete a course
   const handleDelete = (index) => {
-    // Implement delete functionality here
-    console.log(`Delete course at index ${index}`);
+    const updatedCourses = [...courses];
+    updatedCourses.splice(index, 1);
+    setCourses(updatedCourses);
   };
 
   // Function to handle edit popup
@@ -52,8 +52,13 @@ const AdminCourses = () => {
 
   // Function to save edited course
   const saveEditedCourse = () => {
-    // Implement save functionality here
-    console.log('Edited course:', editedCourse);
+    const updatedCourses = [...courses];
+    updatedCourses.forEach((course, index) => {
+      if (course.name === editedCourse.name) {
+        updatedCourses[index] = editedCourse;
+      }
+    });
+    setCourses(updatedCourses);
     setIsEditModalOpen(false);
   };
 
@@ -64,8 +69,8 @@ const AdminCourses = () => {
 
   // Function to save added course
   const saveAddedCourse = () => {
-    // Implement save functionality here
-    console.log('Added course:', addedCourse);
+    const updatedCourses = [...courses, addedCourse];
+    setCourses(updatedCourses);
     setIsAddModalOpen(false);
   };
 

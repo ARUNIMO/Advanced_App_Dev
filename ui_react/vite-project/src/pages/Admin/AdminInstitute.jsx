@@ -11,8 +11,7 @@ const AdminInstitutes = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [editedInstitute, setEditedInstitute] = useState(null);
-
-  const institutes = [
+  const [institutes, setInstitutes] = useState([
     {
       name: 'Institute 1',
       place: 'Location 1',
@@ -30,7 +29,7 @@ const AdminInstitutes = () => {
       phoneNumber: '987-654-3210',
     },
     // Add more institutes as needed
-  ];
+  ]);
 
   // Filter institutes based on search input, rating, place, student count, email, and phone number
   const filteredInstitutes = institutes.filter(institute =>
@@ -44,8 +43,9 @@ const AdminInstitutes = () => {
 
   // Function to delete an institute
   const handleDelete = (index) => {
-    // Implement delete functionality here
-    console.log(`Delete institute at index ${index}`);
+    const updatedInstitutes = [...institutes];
+    updatedInstitutes.splice(index, 1);
+    setInstitutes(updatedInstitutes);
   };
 
   // Function to handle edit popup
@@ -56,8 +56,13 @@ const AdminInstitutes = () => {
 
   // Function to save edited institute
   const saveEditedInstitute = () => {
-    // Implement save functionality here
-    console.log('Edited institute:', editedInstitute);
+    const updatedInstitutes = [...institutes];
+    updatedInstitutes.forEach((institute, index) => {
+      if (institute.name === editedInstitute.name) {
+        updatedInstitutes[index] = editedInstitute;
+      }
+    });
+    setInstitutes(updatedInstitutes);
     setIsEditModalOpen(false);
   };
 
@@ -68,8 +73,8 @@ const AdminInstitutes = () => {
 
   // Function to save added institute
   const saveAddedInstitute = () => {
-    // Implement save functionality here
-    console.log('Added institute:', editedInstitute);
+    const updatedInstitutes = [...institutes, editedInstitute];
+    setInstitutes(updatedInstitutes);
     setIsAddModalOpen(false);
   };
 
@@ -90,10 +95,10 @@ const AdminInstitutes = () => {
             <h2 className="text-2xl font-bold mb-4">Edit Institute</h2>
             <input type="text" value={editedInstitute.name} onChange={(e) => setEditedInstitute({ ...editedInstitute, name: e.target.value })} className="w-full border rounded-md mb-4 p-2" />
             <input type="text" value={editedInstitute.place} onChange={(e) => setEditedInstitute({ ...editedInstitute, place: e.target.value })} className="w-full border rounded-md mb-4 p-2" />
-            <input type="text" value={editedInstitute.rating} onChange={(e) => setEditedInstitute({ ...editedInstitute, rating: e.target.value })} className="w-full border rounded-md mb-4 p-2" />
-            <input type="text" value={editedInstitute.studentCount} onChange={(e) => setEditedInstitute({ ...editedInstitute, studentCount: e.target.value })} className="w-full border rounded-md mb-4 p-2" />
-            <input type="text" value={editedInstitute.email} onChange={(e) => setEditedInstitute({ ...editedInstitute, email: e.target.value })} className="w-full border rounded-md mb-4 p-2" />
-            <input type="text" value={editedInstitute.phoneNumber} onChange={(e) => setEditedInstitute({ ...editedInstitute, phoneNumber: e.target.value })} className="w-full border rounded-md mb-4 p-2" />
+            <input type="number" value={editedInstitute.rating} onChange={(e) => setEditedInstitute({ ...editedInstitute, rating: e.target.value })} className="w-full border rounded-md mb-4 p-2" />
+            <input type="number" value={editedInstitute.studentCount} onChange={(e) => setEditedInstitute({ ...editedInstitute, studentCount: e.target.value })} className="w-full border rounded-md mb-4 p-2" />
+            <input type="email" value={editedInstitute.email} onChange={(e) => setEditedInstitute({ ...editedInstitute, email: e.target.value })} className="w-full border rounded-md mb-4 p-2" />
+            <input type="tel" value={editedInstitute.phoneNumber} onChange={(e) => setEditedInstitute({ ...editedInstitute, phoneNumber: e.target.value })} className="w-full border rounded-md mb-4 p-2" />
             <div className="flex justify-end">
               <button onClick={() => setIsEditModalOpen(false)} className="bg-gray-500 text-white py-2 px-4 rounded-md mr-2">Cancel</button>
               <button onClick={saveEditedInstitute} className="bg-blue-500 text-white py-2 px-4 rounded-md">Save</button>
@@ -107,12 +112,12 @@ const AdminInstitutes = () => {
         <div className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50 z-50">
           <div className="bg-white p-8 rounded-lg">
             <h2 className="text-2xl font-bold mb-4">Add Institute</h2>
-            <input type="text" placeholder="Name" className="w-full border rounded-md mb-4 p-2" />
-            <input type="text" placeholder="Place" className="w-full border rounded-md mb-4 p-2" />
-            <input type="text" placeholder="Rating" className="w-full border rounded-md mb-4 p-2" />
-            <input type="text" placeholder="Student Count" className="w-full border rounded-md mb-4 p-2" />
-            <input type="text" placeholder="Email" className="w-full border rounded-md mb-4 p-2" />
-            <input type="text" placeholder="Phone Number" className="w-full border rounded-md mb-4 p-2" />
+            <input type="text" placeholder="Name" value={editedInstitute.name} onChange={(e) => setEditedInstitute({ ...editedInstitute, name: e.target.value })} className="w-full border rounded-md mb-4 p-2" />
+            <input type="text" placeholder="Place" value={editedInstitute.place} onChange={(e) => setEditedInstitute({ ...editedInstitute, place: e.target.value })} className="w-full border rounded-md mb-4 p-2" />
+            <input type="number" placeholder="Rating" value={editedInstitute.rating} onChange={(e) => setEditedInstitute({ ...editedInstitute, rating: e.target.value })} className="w-full border rounded-md mb-4 p-2" />
+            <input type="number" placeholder="Student Count" value={editedInstitute.studentCount} onChange={(e) => setEditedInstitute({ ...editedInstitute, studentCount: e.target.value })} className="w-full border rounded-md mb-4 p-2" />
+            <input type="email" placeholder="Email" value={editedInstitute.email} onChange={(e) => setEditedInstitute({ ...editedInstitute, email: e.target.value })} className="w-full border rounded-md mb-4 p-2" />
+            <input type="tel" placeholder="Phone Number" value={editedInstitute.phoneNumber} onChange={(e) => setEditedInstitute({ ...editedInstitute, phoneNumber: e.target.value })} className="w-full border rounded-md mb-4 p-2" />
             <div className="flex justify-end">
               <button onClick={() => setIsAddModalOpen(false)} className="bg-gray-500 text-white py-2 px-4 rounded-md mr-2">Cancel</button>
               <button onClick={saveAddedInstitute} className="bg-blue-500 text-white py-2 px-4 rounded-md">Save</button>

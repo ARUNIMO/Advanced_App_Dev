@@ -18,7 +18,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      {/* Gradient for Celebrate365 */}
       <style>
         {`
           .gradient-text {

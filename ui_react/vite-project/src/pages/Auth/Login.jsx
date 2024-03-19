@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Import Link and useNavigate from react-router-dom
-import BackgroundGif from '/Users/arunvs/Advanced_App_dev/ui_react/vite-project/src/assets/images/mat.gif'; // Import the background GIF
+import BackgroundGif from '/mat.gif'; // Import the background GIF
 
 const Login = () => {
   const navigate = useNavigate(); // Initialize useNavigate hook
@@ -15,8 +15,10 @@ const Login = () => {
     if ((email === 'arun@gmail.com' && password === '12345') || (email === 'admin@gmail.com' && password === 'admin')) {
       // Redirect to the appropriate dashboard
       if (email === 'arun@gmail.com') {
+        localStorage.setItem('login','login')
         navigate('/user');
       } else if (email === 'admin@gmail.com') {
+        localStorage.setItem('login','login')
         navigate('/admin/dashboard');
       }
     } else {

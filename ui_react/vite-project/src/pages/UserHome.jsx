@@ -37,9 +37,8 @@ const UserHome = () => {
         <div className="space-x-4">
           {/* Link to Register */}
           
-          {/* Link to Events */}
-          <Link to="/events">
-            <button className="bg-gradient-to-r from-orange-400 to-red-500 hover:from-red-500 hover:to-orange-400 text-white py-2 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">View Events</button>
+          <Link to="/institutes">
+            <button className="bg-gradient-to-r from-orange-400 to-red-500 hover:from-red-500 hover:to-orange-400 text-white py-2 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">View Institutions</button>
           </Link>
         </div>
       </div>
